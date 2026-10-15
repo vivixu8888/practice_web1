@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7eee9">
+  <title>慢慢来 · 我的生活仪表盘</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#home" aria-label="慢慢来首页"><span class="brand-icon">✳</span><span>慢慢来<small>A LITTLE EVERY DAY</small></span></a>
+    <div class="nav-label">我的小天地</div>
+    <nav aria-label="页面导航">
+      <a class="active" href="#home"><span>◫</span> 今日概览 <span class="nav-dot"></span></a>
+      <a href="#tasks"><span>☑</span> 每日待办</a>
+      <a href="#study"><span>◷</span> 专注学习</a>
+      <a href="#habits"><span>✿</span> 习惯花园</a>
+      <a href="#mood"><span>☺</span> 心情日记</a>
+    </nav>
+    <div class="sidebar-note"><div class="flower">✿</div><p>你正在，慢慢变好。</p><small>每一个小小的进步，都算数。</small></div>
+    <div class="local-note"><span>●</span> 数据仅保存在此浏览器</div>
+  </aside>
+  <main id="home">
+    <header><div class="breadcrumb">我的空间 <span>/</span> 今日概览</div><div class="header-right"><span class="live-dot"></span> 给生活一点温柔 <span class="avatar">V</span></div></header>
+    <section class="welcome"><div><div class="eyebrow">MAKE ROOM FOR A LITTLE JOY</div><h1>把今天，过成喜欢的样子<span> ✨</span></h1><p>不必一下子变得很厉害，今天也向前走一小步吧。</p></div><div class="date-block"><span id="date-label"></span><strong id="weekday-label"></strong></div></section>
+    <section class="hero" aria-label="每日励志语录"><div class="hero-copy"><span class="pill">✧ 今日的一点灵感</span><h2 id="quote"></h2><p id="quote-source"></p></div><div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><span class="art-star">✧</span><div class="vase"><div class="stem stem-one"></div><div class="stem stem-two"></div><div class="bloom bloom-one">✿</div><div class="bloom bloom-two">✿</div><div class="vase-body"></div></div><span class="art-note">bloom at your own pace</span></div></section>
+    <div class="section-heading"><h2>我的今日 <span>THE LITTLE THINGS</span></h2><span>每一份努力，都有回响 ♡</span></div>
+    <section class="stats" aria-label="今日进度">
+      <div class="stat"><span class="stat-icon pink">☑</span><div><small>今日待办</small><strong id="task-stat">0 <em>/ 0</em></strong></div><span class="stat-caption">一步一步来</span></div>
+      <div class="stat"><span class="stat-icon tan">◷</span><div><small>学习时长</small><strong><span id="study-stat">0</span> <em>分钟</em></strong></div><span class="stat-caption">专注的你很闪亮</span></div>
+      <div class="stat"><span class="stat-icon green">✿</span><div><small>习惯打卡</small><strong id="habit-stat">0 <em>/ 4</em></strong></div><span class="stat-caption">让好习惯发芽</span></div>
+    </section>
+    <div class="dashboard-grid">
+      <section class="card task-card" id="tasks"><div class="card-heading"><div><span class="overline">ONE THING AT A TIME</span><h2>每日待办 <span>📝</span></h2></div><span class="badge" id="task-badge">0 项完成</span></div><div class="progress-track"><div id="task-progress"></div></div><div id="task-list" class="task-list"></div><form id="task-form" class="add-task"><span>＋</span><input id="task-input" aria-label="新的待办事项" placeholder="添加一件想完成的小事…" maxlength="100" required autocomplete="off"><button type="submit" aria-label="添加待办">添加</button></form><p class="card-foot">留一点空间，给生活的小惊喜。</p></section>
+      <section class="card study-card" id="study"><div class="card-heading"><div><span class="overline">TIME TO FOCUS</span><h2>专注一会儿 <span>☕</span></h2></div><span class="badge cream">学习时光</span></div><div class="timer-ring"><div><span id="timer" role="timer" aria-label="学习计时">00:00</span><small id="timer-status">准备好，开始一段专注</small></div></div><div class="timer-actions"><button id="timer-toggle" class="primary">▷ 开始专注</button><button id="timer-finish" class="secondary">结束并记录</button></div><form id="study-form" class="manual-study"><label for="study-minutes">补记学习</label><input type="number" id="study-minutes" min="1" max="1440" placeholder="分钟" required><button type="submit">＋ 记录</button></form><p class="card-foot" id="study-summary">今天还没有记录，随时都可以开始。</p></section>
+      <section class="card habits-card" id="habits"><div class="card-heading"><div><span class="overline">SMALL HABITS, BIG MAGIC</span><h2>习惯花园 <span>🌱</span></h2></div><span class="subtle">点击，为今天浇浇水</span></div><div id="habit-list" class="habit-list"></div><div class="week-heading"><span>最近七天 · 习惯足迹</span><span id="week-total"></span></div><div id="habit-week" class="habit-week"></div></section>
+      <section class="card mood-card" id="mood"><div class="card-heading"><div><span class="overline">HOW'S YOUR HEART TODAY?</span><h2>今天的心情 <span>♡</span></h2></div><span class="subtle">每一种感受，都值得被接住</span></div><div class="mood-options" id="mood-options" role="group" aria-label="选择今日心情"></div><label class="sr-only" for="mood-note">记录今日心情</label><textarea id="mood-note" maxlength="500" placeholder="今天发生了什么？写给自己的一句话…"></textarea><div class="mood-bottom"><span id="mood-saved">只属于你的小小心事</span><button id="save-mood" class="primary">保存心情 ♡</button></div></section>
+    </div>
+    <footer><span>为自己留一点时间，生活会慢慢发光。</span><span>MADE WITH ♡ · 慢慢来</span></footer>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <div id="storage-warning" role="alert" hidden>浏览器暂时无法保存数据。请允许本地存储；关闭页面后，当前记录可能丢失。</div>
+  </main>
+</body>
+</html>
